@@ -1,0 +1,32 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: url('@/assets/bg.jpg') center / cover no-repeat;
+}
+
+.login-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  width: 800px;
+  height: 400px;
+  background: url('@/assets/lgbg.jpg') center / cover no-repeat;
+}
+
+.part {
+  width: 400px;
+  height: 100%;
+  padding-top: 20px;
+  background-color: #fff;
+  &__logo {
+    width: 100px;
+    height: 100px;
+  }
+  &__title {
+    font-size: 30px;
+    font-weight: 600;
+    color: #027cc5;
+  }
+}
