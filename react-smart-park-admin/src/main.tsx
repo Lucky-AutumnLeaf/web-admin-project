@@ -8,9 +8,10 @@ import '@/index.scss'
 import { App } from '@/App.tsx'
 import { Provider } from 'jotai'
 import { createRoot } from 'react-dom/client'
+import { store } from './store'
 
 createRoot(document.getElementById('root')!).render(
-  <Provider>
+  <Provider store={store}>
     <App />
   </Provider>
 )

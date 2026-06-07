@@ -8,5 +8,5 @@ export const AuthLayout = ({ children }: PropsWithChildren) => {
   if (token) {
     return children
   }
-  return <Navigate to="/login" />
+  return <Navigate to="/login" replace />
 }

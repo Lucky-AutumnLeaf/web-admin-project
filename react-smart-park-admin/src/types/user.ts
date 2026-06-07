@@ -8,3 +8,10 @@ export type LoginResultType = {
   username: string
   btnAuth: string[]
 }
+
+export type MenuResultType = {
+  key: string
+  label: string
+  icon?: string
+  children?: MenuResultType[]
+}

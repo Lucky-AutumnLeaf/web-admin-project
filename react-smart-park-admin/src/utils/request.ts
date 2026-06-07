@@ -1,14 +1,14 @@
 import { userInfoAtom } from '@/atoms/user'
+import { store } from '@/store'
 import type {
   AxiosError,
   AxiosResponse,
   InternalAxiosRequestConfig
 } from 'axios'
 import axios from 'axios'
-import { getDefaultStore } from 'jotai'
 import { RESET } from 'jotai/utils'
 
-interface ApiResponse<T = unknown> {
+export interface ApiResponse<T = unknown> {
   code: number
   message: string
   data: T
@@ -21,7 +21,7 @@ const request = axios.create({
 
 request.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
-    const token = getDefaultStore().get(userInfoAtom).token
+    const token = store.get(userInfoAtom).token
 
     // 登录接口放行
     if (token) {
@@ -36,11 +36,15 @@ request.interceptors.request.use(
 
 request.interceptors.response.use(
   (response: AxiosResponse) => {
-    return response.data
+    const { code, message: msg, data } = response.data as ApiResponse
+    if (code !== 200) {
+      return Promise.reject(new Error(msg))
+    }
+    return { data, message: msg } as unknown as AxiosResponse
   },
   (err: AxiosError) => {
     if (err.response?.status === 401) {
-      getDefaultStore().set(userInfoAtom, RESET)
+      store.set(userInfoAtom, RESET)
     }
     return Promise.reject(err)
   }

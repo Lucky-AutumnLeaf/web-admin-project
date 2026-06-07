@@ -386,7 +386,8 @@ const customizeMenuList = [
 
 //菜单接口
 Mock.mock('https://www.demo.com/menu', 'get', (options) => {
-  const token = sessionStorage.getItem('token')
+  const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}')
+  const token = userInfo.token
   if (token == 'mocktoken123456admin') {
     return {
       code: 200,

@@ -3,30 +3,20 @@ import styles from './index.module.scss'
 import { loginApi } from '@/api/user'
 import logo from '@/assets/logo.png'
 import { userInfoAtom } from '@/atoms/user'
+import useAppRequest from '@/hooks/useAppRequest'
 import type { LoginFormType } from '@/types/user'
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
-import { useRequest } from 'ahooks'
 import { Button, Flex, Form, Input, message } from 'antd'
 import { useSetAtom } from 'jotai'
-import { useNavigate } from 'react-router'
 
 const Login = () => {
-  const navigate = useNavigate()
   const setUserInfo = useSetAtom(userInfoAtom)
 
-  const { run: login, loading } = useRequest(loginApi, {
+  const { run: login, loading } = useAppRequest(loginApi, {
     manual: true,
     onSuccess: (res) => {
-      if (res.code === 200) {
-        setUserInfo(res.data)
-        message.success(res.message)
-        navigate('/')
-      } else {
-        message.error(res.message)
-      }
-    },
-    onError: (err) => {
-      message.error(err.message)
+      setUserInfo(res.data)
+      message.success(res.message)
     }
   })
 

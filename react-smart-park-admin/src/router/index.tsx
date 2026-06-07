@@ -1,9 +1,9 @@
 import { AuthGuard } from '@/components/auth/AuthGuard'
 import { AuthLayout } from '@/components/auth/AuthLayout'
-import { createBrowserRouter } from 'react-router'
-import { Layout, Login, NotFound } from './lazy'
+import type { RouteObject } from 'react-router'
+import { Home, Login, NotFound } from './lazy'
 
-const router = createBrowserRouter([
+export const routes: RouteObject[] = [
   {
     path: '/login',
     element: (
@@ -16,7 +16,7 @@ const router = createBrowserRouter([
     path: '/',
     element: (
       <AuthLayout>
-        <Layout />
+        <Home />
       </AuthLayout>
     )
   },
@@ -25,6 +25,4 @@ const router = createBrowserRouter([
     path: '*',
     element: <NotFound />
   }
-])
-
-export default router
+]
