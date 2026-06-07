@@ -1,4 +1,3 @@
-import { MyBreadcrumb } from '@/home/MyBreadcrumb'
 import { MyHeader } from '@/home/MyHeader'
 import { MySider } from '@/home/MySider'
 import { Layout, theme } from 'antd'
@@ -20,7 +19,6 @@ const Home = () => {
       <Layout>
         <MyHeader />
         <Content>
-          <MyBreadcrumb />
           <Suspense fallback={<div>Loading...</div>}>
             <Outlet />
           </Suspense>

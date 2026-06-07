@@ -1,4 +1,5 @@
 import { userInfoAtom } from '@/atoms/user'
+import { MyBreadcrumb } from '@/home/MyBreadcrumb'
 import { logout } from '@/utils/logout'
 import { DownOutlined } from '@ant-design/icons'
 import { Button, Dropdown, Layout, Space } from 'antd'
@@ -17,6 +18,7 @@ export const MyHeader = () => {
   }
   return (
     <Header className={styles.header}>
+      <MyBreadcrumb />
       <Dropdown menu={{ items, onClick }} trigger={['click']}>
         <Button type="link">
           <Space>

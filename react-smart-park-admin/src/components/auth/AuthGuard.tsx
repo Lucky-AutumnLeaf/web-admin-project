@@ -6,7 +6,7 @@ import { Navigate } from 'react-router'
 export const AuthGuard = ({ children }: PropsWithChildren) => {
   const { token } = useAtomValue(userInfoAtom)
   if (token) {
-    return <Navigate to="/" replace />
+    return <Navigate to="/dashboard" replace />
   }
   return children
 }

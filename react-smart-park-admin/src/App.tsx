@@ -27,7 +27,7 @@ export const App = () => {
     const mergedRoutes = produce(routes, (draft) => {
       const homeRoute = draft.find((r) => r.path === '/')
       if (homeRoute) {
-        homeRoute.children = dynamicRoutes
+        homeRoute.children = [...homeRoute.children, ...dynamicRoutes]
       }
     })
     return createBrowserRouter(mergedRoutes)

@@ -13,6 +13,7 @@ export const MyMenu = () => {
     <Menu
       theme="dark"
       defaultSelectedKeys={['/dashboard']}
+      selectedKeys={[location.pathname]}
       mode="inline"
       items={items}
       onClick={({ key }) => navigate(key)}
