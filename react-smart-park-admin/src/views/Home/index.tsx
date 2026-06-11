@@ -1,29 +1,25 @@
 import { MyHeader } from '@/home/MyHeader'
 import { MySider } from '@/home/MySider'
-import { Layout, theme } from 'antd'
+import { Layout } from 'antd'
 import { Suspense } from 'react'
 import { Outlet } from 'react-router'
+import styles from './index.module.scss'
 
 const { Content, Footer } = Layout
 
 const Home = () => {
-  const {
-    token: { colorBgContainer }
-  } = theme.useToken()
-
   const currentYear = new Date().getFullYear()
-
   return (
-    <Layout style={{ minHeight: '100vh' }}>
+    <Layout className={styles.layout}>
       <MySider />
       <Layout>
         <MyHeader />
-        <Content>
+        <Content className={styles.content}>
           <Suspense fallback={<div>Loading...</div>}>
             <Outlet />
           </Suspense>
         </Content>
-        <Footer style={{ textAlign: 'center', background: colorBgContainer }}>
+        <Footer className={styles.footer}>
           Ant Design ©{currentYear} Created by Ant UED
         </Footer>
       </Layout>

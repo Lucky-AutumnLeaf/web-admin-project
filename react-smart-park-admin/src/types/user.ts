@@ -15,3 +15,29 @@ export type MenuResultType = {
   icon?: string
   children?: MenuResultType[]
 }
+
+export type UserListResponseType = {
+  id: string
+  name: string
+  status: string
+  tel: string
+  business: string
+  email: string
+  creditCode: string
+  industryNum: string
+  organizationCode: string
+  legalPerson: string
+}
+
+export interface PaginationParams {
+  pageNum: number
+  pageSize: number
+}
+
+export interface UserQueryParams {
+  companyName?: string
+  contact?: string
+  tel?: string
+}
+
+export type UserListRequestType = PaginationParams & UserQueryParams

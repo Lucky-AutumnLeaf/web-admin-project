@@ -1,0 +1,13 @@
+.layout {
+  height: 100%;
+}
+
+.content {
+  padding: 16px;
+  // 超出部分滚动
+  overflow: auto;
+}
+
+.footer {
+  background: #fff;
+}

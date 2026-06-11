@@ -2,20 +2,32 @@ import { userInfoAtom } from '@/atoms/user'
 import { MyBreadcrumb } from '@/home/MyBreadcrumb'
 import { logout } from '@/utils/logout'
 import { DownOutlined } from '@ant-design/icons'
+import type { MenuProps } from 'antd'
 import { Button, Dropdown, Layout, Space } from 'antd'
 import { useAtomValue } from 'jotai'
+import { useCallback } from 'react'
+import { useNavigate } from 'react-router'
 import styles from './index.module.scss'
 import { items } from './items'
 
 const { Header } = Layout
 
 export const MyHeader = () => {
+  const navigate = useNavigate()
   const username = useAtomValue(userInfoAtom).username
-  const onClick = ({ key }) => {
-    if (key === 'logout') {
-      logout()
-    }
-  }
+  const onClick: MenuProps['onClick'] = useCallback(
+    ({ key }) => {
+      switch (key) {
+        case 'logout':
+          logout()
+          break
+        default:
+          navigate(key)
+          break
+      }
+    },
+    [navigate]
+  )
   return (
     <Header className={styles.header}>
       <MyBreadcrumb />

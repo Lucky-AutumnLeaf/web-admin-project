@@ -442,7 +442,7 @@ Mock.mock('https://www.demo.com/userList', 'post', (options) => {
   const { pageSize, page, companyName, contact, phone } = JSON.parse(
     options.body
   )
-  console.log('租户列表接收到参数', page, pageSize, companyName, contact, phone)
+
   return {
     code: 200,
     message: '成功',
